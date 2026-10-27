@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+/* Basic Reset */
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+/* Mint tile-grid page */
+body {
+ min-height: 100vh;
+ padding: 24px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ font-family: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+ color: #F0F9FF;
+ background:
+  linear-gradient(rgba(111, 200, 255, 0.28) 2px, transparent 2px) 0 0 / 60px 60px fixed,
+  linear-gradient(90deg, rgba(111, 200, 255, 0.28) 2px, transparent 2px) 0 0 / 60px 60px fixed,
+  linear-gradient(150deg, #F0F9FF 0%, #DDF1FF 55%, #B9DDFB 100%) fixed;
+}
+
+/* Leaf + flower clusters behind the card */
+html::before, html::after {
+ content: "";
+ position: fixed;
+ z-index: -1;
+ width: 400px;
+ height: 400px;
+ pointer-events: none;
+ background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 420'%3E%3Cdefs%3E%3ClinearGradient id='lg' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%231B4DA8'/%3E%3Cstop offset='1' stop-color='%236CC8FF'/%3E%3C/linearGradient%3E%3CradialGradient id='pg' cx='50%25' cy='85%25' r='95%25'%3E%3Cstop offset='0' stop-color='%239FE0FF'/%3E%3Cstop offset='.35' stop-color='%23DDF1FF'/%3E%3Cstop offset='1' stop-color='%23FFFFFF'/%3E%3C/radialGradient%3E%3Cpath id='leaf' d='M0 0C40 -34 120 -34 170 0C120 34 40 34 0 0Z'/%3E%3Cg id='flower'%3E%3Cg fill='url(%23pg)' stroke='%239DB9DE' stroke-width='1.4'%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='11' fill='%238FD3FF'/%3E%3Ccircle r='5' fill='%23FFC9BF'/%3E%3C/g%3E%3C/defs%3E%3Cg transform='translate(400 20)'%3E%3Cuse href='%23leaf' fill='url(%23lg)' transform='rotate(155)'/%3E%3Cuse href='%23leaf' fill='%232F7FE0' transform='rotate(128) scale(.8)'/%3E%3Cuse href='%23leaf' fill='%233FA9F5' transform='rotate(180) scale(.9)'/%3E%3Cuse href='%23leaf' fill='%231B4DA8' transform='rotate(104) scale(.62)'/%3E%3Cuse href='%23flower' transform='translate(-170 135)'/%3E%3Cuse href='%23flower' transform='translate(-72 215) rotate(30) scale(.62)'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+html::before { top: -10px; right: -30px; }
+html::after { bottom: -20px; left: -30px; transform: rotate(180deg); }
+
+/* Card */
+.form-container {
+ position: relative;
+ width: 100%;
+ max-width: 400px;
+ padding: 32px 34px 32px;
+ text-align: center;
+ color: #F0F9FF;
+ background: linear-gradient(135deg, #0B1F4D 0%, #1B4DA8 58%, #2F7FE0 100%);
+ border: 1.5px solid rgba(255, 255, 255, 0.45);
+ border-radius: 34px;
+ box-shadow: 0 26px 50px rgba(8, 21, 55, 0.4);
+ z-index: 1;
+}
+.form-container::after { /* sparkle badge */
+ content: "";
+ position: absolute;
+ top: -20px;
+ right: 34px;
+ width: 52px;
+ height: 52px;
+ border-radius: 50%;
+ background: #F0F9FF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%231B4DA8' d='M12 1l2.6 8.4L23 12l-8.4 2.6L12 23l-2.6-8.4L1 12l8.4-2.6z'/%3E%3C/svg%3E") center / 52% no-repeat;
+ border: 3px solid #3FA9F5;
+ box-shadow: 0 6px 14px rgba(8, 21, 55, 0.3);
+}
+.form-container h2 {
+ margin: 0 -34px 18px;
+ padding: 0 34px 14px;
+ text-align: left;
+ font-family: 'Righteous', 'Trebuchet MS', system-ui, sans-serif;
+ font-weight: 400;
+ font-size: 2.1rem;
+ letter-spacing: 0.04em;
+ text-transform: uppercase;
+ background: linear-gradient(180deg, #FFFFFF 0%, #BFE3FF 100%);
+ -webkit-background-clip: text;
+ background-clip: text;
+ -webkit-text-fill-color: transparent;
+ color: transparent;
+ border-bottom: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Label Styling */
+label {
+ display: block;
+ margin: 12px 0 6px 8px;
+ text-align: left;
+ font-size: 0.88rem;
+ font-weight: 700;
+ color: #DDF1FF;
+}
+
+/* Input Field Styling: frosted pill bars */
+input[type="text"], input[type="password"] {
+ width: 100%;
+ padding: 12px 22px;
+ margin-bottom: 4px;
+ font-family: 'Space Mono', 'Courier New', monospace;
+ font-size: 0.92rem;
+ color: #081537;
+ background: linear-gradient(180deg, #F6FAFF 0%, #C9D9EE 100%);
+ border: 2px solid rgba(255, 255, 255, 0.7);
+ border-radius: 999px;
+ box-shadow: inset 0 2px 4px rgba(8, 21, 55, 0.2);
+ outline: none;
+ transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input[type="text"]:focus, input[type="password"]:focus {
+ border-color: #8FD3FF;
+ box-shadow: 0 0 0 4px rgba(143, 211, 255, 0.45);
+}
+
+/* Button Styling */
+button {
+ width: 100%;
+ margin: 18px 0 0;
+ padding: 13px;
+ font-family: inherit;
+ font-size: 1rem;
+ font-weight: 800;
+ color: #1B4DA8;
+ background: #E3F1FF;
+ border: none;
+ border-radius: 999px;
+ cursor: pointer;
+ box-shadow: 0 10px 20px rgba(8, 21, 55, 0.35);
+ transition: background-color 0.2s ease, transform 0.2s ease;
+}
+button:hover {
+ background: #ffffff;
+ transform: translateY(-2px);
+}
+button:focus-visible, a:focus-visible, input:focus-visible {
+ outline: 3px solid #8FD3FF;
+ outline-offset: 2px;
+}
+
+/* Error Message Styling */
+#errorMessage {
+ min-height: 1.2em;
+ margin-top: 10px;
+ font-size: 0.9rem;
+ font-weight: 700;
+ color: #FFC9BF;
+}
+
+/* Match message: the script sets its colour, so give it a light pill to stay readable */
+#passwordMatchMessage {
+ width: fit-content;
+ margin: 8px 0 0 8px;
+ padding: 3px 14px;
+ text-align: left;
+ font-weight: 700;
+ background: #F0F9FF;
+ border-radius: 999px;
+}
+
+/* Show Password Container */
+.show-password {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ margin: 8px 0 2px 8px;
+ font-size: 0.88rem;
+}
+.show-password label {
+ margin: 0;
+ font-weight: 600;
+ cursor: pointer;
+}
+.show-password input[type="checkbox"] {
+ width: 16px;
+ height: 16px;
+ accent-color: #8FD3FF;
+ cursor: pointer;
+}
+
+/* Switch between Login / Sign Up */
+#toggleText {
+ margin-top: 18px;
+ font-size: 0.92rem;
+ color: #BFE3FF;
+}
+#toggleText a {
+ font-weight: 800;
+ color: #9FE0FF;
+ text-decoration: none;
+}
+#toggleText a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+ html::before, html::after { width: 240px; height: 240px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ * { transition: none !important; }
+}
+html[data-theme="dark"] body {
+ background:
+  linear-gradient(rgba(111, 200, 255, 0.12) 2px, transparent 2px) 0 0 / 60px 60px fixed,
+  linear-gradient(90deg, rgba(111, 200, 255, 0.12) 2px, transparent 2px) 0 0 / 60px 60px fixed,
+  linear-gradient(150deg, #0B1F4D 0%, #08183C 55%, #050E24 100%) fixed;
+}
+#petals {
+ position: fixed;
+ inset: 0;
+ width: 100%;
+ height: 100%;
+ pointer-events: none;
+ z-index: 0;
+}
+/* Replace the old pseudo-element flowers with real elements */
+html::before, html::after { display: none; }
+
+.decor {
+ position: fixed;
+ width: 400px;
+ height: 400px;
+ pointer-events: none;
+ z-index: 0;
+ background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 420 420'%3E%3Cdefs%3E%3ClinearGradient id='lg' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%231B4DA8'/%3E%3Cstop offset='1' stop-color='%236CC8FF'/%3E%3C/linearGradient%3E%3CradialGradient id='pg' cx='50%25' cy='85%25' r='95%25'%3E%3Cstop offset='0' stop-color='%239FE0FF'/%3E%3Cstop offset='.35' stop-color='%23DDF1FF'/%3E%3Cstop offset='1' stop-color='%23FFFFFF'/%3E%3C/radialGradient%3E%3Cpath id='leaf' d='M0 0C40 -34 120 -34 170 0C120 34 40 34 0 0Z'/%3E%3Cg id='flower'%3E%3Cg fill='url(%23pg)' stroke='%239DB9DE' stroke-width='1.4'%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(0)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(72)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(144)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(216)'/%3E%3Cellipse cx='0' cy='-34' rx='17' ry='36' transform='rotate(288)'/%3E%3C/g%3E%3Ccircle r='11' fill='%238FD3FF'/%3E%3Ccircle r='5' fill='%23FFC9BF'/%3E%3C/g%3E%3C/defs%3E%3Cg transform='translate(400 20)'%3E%3Cuse href='%23leaf' fill='url(%23lg)' transform='rotate(155)'/%3E%3Cuse href='%23leaf' fill='%232F7FE0' transform='rotate(128) scale(.8)'/%3E%3Cuse href='%23leaf' fill='%233FA9F5' transform='rotate(180) scale(.9)'/%3E%3Cuse href='%23leaf' fill='%231B4DA8' transform='rotate(104) scale(.62)'/%3E%3Cuse href='%23flower' transform='translate(-170 135)'/%3E%3Cuse href='%23flower' transform='translate(-72 215) rotate(30) scale(.62)'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+.decor-tr { top: -10px; right: -30px; }
+.decor-bl { bottom: -20px; left: -30px; transform: rotate(180deg); }
+
+html[data-theme="dark"] .decor {
+ filter: drop-shadow(0 0 14px rgba(111, 200, 255, 0.45));
+}
+
+@media (max-width: 640px) {
+ .decor { width: 240px; height: 240px; }
+}

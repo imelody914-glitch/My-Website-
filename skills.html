@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Skills I'm Developing</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header>
+ <div class="brand">
+ <span class="brand-avatar"><img src="ton.jpg" alt=""></span>
+ <div class="brand-text"><h1>Welcome to My Personal Website</h1><span>IT Student</span></div>
+ </div>
+ </header>
+ <nav>
+ <ul>
+ <li><a href="index.html">Home</a></li>
+ <li class="dropdown">
+ <a href="#" class="dropbtn" aria-current="page">About</a>
+ <div class="dropdown-content">
+ <a href="skills.html">Skills I'm Developing</a>
+<a href="goals.html">My Goals as a Student</a>
+<a href="funfacts.html">Fun Facts About Me</a>
+ </div>
+ </li>
+ <li><a href="gallery.html">Gallery</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()">Log out</a>
+ </ul>
+ </nav>
+ <section id="section2"></section>
+ <section id="drop">
+ <h2>Skills I'm Developing</h2>
+ <p>As a student, I’m actively developing a diverse set of skills that reflect my passions in technology and beyond.</p>
+ 
+ <section id="skills">
+ 
+ <div class="tab">
+ <button class="tablinks" onclick="openTab(event, 'IT')">Information System</button>
+ <button class="tablinks" onclick="openTab(event, 'GraphicDesign')">Graphic Design</button>
+ <button class="tablinks" onclick="openTab(event, 'PublicSpeaking')">Public Speaking</button>
+ <button class="tablinks" onclick="openTab(event, 'ProblemSolving')">Problem Solving</button>
+ </div>
+ 
+ <div id="IT" class="tabcontent">
+ <h3>Information System</h3>
+ <ul>
+ <li>Mastering front-end web development with <strong>HTML, CSS, and JavaScript</strong></li>
+ <li>Learning <strong>responsive design</strong> to create user-friendly experiences across devices</li>
+ <li> Creating modern and accessible web interfaces</li>
+ </ul>
+ </div>
+ 
+ <div id="GraphicDesign" class="tabcontent" style="display:none;">
+ <h3>Graphic Design</h3>
+ <ul>
+ <li>Exploring visual design with tools like <strong>Adobe Illustrator and Canva</strong></li>
+ <li>Building skills in branding, layout, and digital illustration</li>
+<li> Combining design with web development for cohesive digital presence</li>
+ </ul>
+ </div>
+ <div id="PublicSpeaking" class="tabcontent" style="display:none;">
+ <h3>Public Speaking</h3>
+ <ul>
+ <li>Developing communication skills through workshops and presentations</li>
+<li>Practicing storytelling techniques to engage and inspire audiences</li>
+<li>Strengthening my ability to share ideas clearly and confidently
+</li>
+ </ul>
+ </div>
+ <div id="ProblemSolving" class="tabcontent" style="display:none;">
+ <h3>Problem Solving and Critical Thinking</h3>
+ <ul>
+ <li>Enhancing analytical skills through coding challenges and project-based learning</li>
+ <li>Focusing on efficient solutions and optimizing workflows in web development</li>
+ <li>Building a structured approach to tackling complex problems</li> 
+ </ul>
+ </div>
+ </section>
+ </section>
+ <footer>
+ <p>&copy; 2024 Your Name. All rights reserved.</p>
+ </footer>
+ <div class="footer-divider"></div> <!-- Orange line -->
+<script>
+function openTab(evt, tabName) {
+ // Get all tab content elements
+ const tabcontents = document.getElementsByClassName("tabcontent");
+ // Hide all tab content
+ for (let i = 0; i < tabcontents.length; i++) {
+ tabcontents[i].style.display = "none";
+ }
+ // Remove "active" class from all tab links
+ const tablinks = document.getElementsByClassName("tablinks");
+ for (let i = 0; i < tablinks.length; i++) {
+ tablinks[i].classList.remove("active");
+ }
+ // Show the current tab
+ document.getElementById(tabName).style.display = "block";
+ evt.currentTarget.classList.add("active");
+}
+// Initially show the first tab content
+document.addEventListener("DOMContentLoaded", function() {
+ document.querySelector('.tablinks').click(); // Simulates a click on the first tab
+});
+</script>
+<script>
+ // Logout function with confirmation
+ function confirmLogout() {
+ // Show a confirmation message to the user
+ const confirmLogout = confirm("Are you sure you want to log out?");
+ 
+ // If the user confirms, proceed with logging out
+ if (confirmLogout) {
+ // Mark the user as logged out in localStorage (if used)
+ localStorage.removeItem('isLoggedIn'); // Or any other keys related to login credentials
+ 
+ // Redirect to the login page
+ window.location.href = 'login.html';
+ } else {
+ // If the user cancels, do nothing
+ return;
+ }
+ }
+ 
+ </script>
+ <button id="themeBtn" class="theme-btn" type="button" aria-label="Toggle light and dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4"/>
+      <line x1="12" y1="20" x2="12" y2="22.5"/>
+      <line x1="1.5" y1="12" x2="4" y2="12"/>
+      <line x1="20" y1="12" x2="22.5" y2="12"/>
+      <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/>
+      <line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
+      <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/>
+      <line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
+    </g>
+  </svg>
+</button>
+
+<script>
+(function () {
+  var btn = document.getElementById('themeBtn');
+  try {
+    if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+  } catch (e) {}
+
+  btn.addEventListener('click', function () {
+    var isLight = document.body.classList.toggle('light-mode');
+    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

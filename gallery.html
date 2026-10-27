@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Gallery - Personal Website</title>
+ <link rel="stylesheet" href="style.css">
+ 
+<style>
+/* Falling icy-blue glowing particles */
+.falling-particle {
+    position: fixed;
+    top: -12px;
+    z-index: 10;
+    width: var(--size, 3px);
+    height: var(--size, 3px);
+    border-radius: 50%;
+    background: #d9f2ff;
+    box-shadow:
+        0 0 5px #bce8ff,
+        0 0 10px #65baff,
+        0 0 16px rgba(80, 165, 255, .7);
+    opacity: 0;
+    pointer-events: none;
+    animation: particleFall var(--duration, 8s) linear var(--delay, 0s) infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes particleFall {
+    0% {
+        transform: translate3d(0, -10px, 0);
+        opacity: 0;
+    }
+    10% {
+        opacity: var(--glow, .8);
+    }
+    50% {
+        transform: translate3d(var(--drift, 20px), 50vh, 0);
+        opacity: var(--glow, .8);
+    }
+    90% {
+        opacity: .5;
+    }
+    100% {
+        transform: translate3d(calc(var(--drift, 20px) * -0.5), 105vh, 0);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .falling-particle {
+        display: none;
+        animation: none;
+    }
+}
+</style>
+ 
+<style>
+/* Scroll reveal animation for gallery photos */
+#gallery .gallery-item {
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+    filter: blur(5px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1),
+        filter 0.8s ease;
+}
+
+/* Photo becomes visible when scrolled into view */
+#gallery .gallery-item.photo-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+/* Soft blue glow after appearing */
+#gallery .gallery-item.photo-visible {
+    box-shadow: 0 8px 28px rgba(100, 175, 255, 0.13);
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #gallery .gallery-item {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}
+</style>
+ 
+</head>
+<body>
+ <header>
+ <div class="brand">
+ <span class="brand-avatar"><img src="ton.jpg" alt=""></span>
+ <div class="brand-text"><h1>Welcome to My Personal Website</h1><span>IT Student</span></div>
+ </div>
+ </header>
+ <nav>
+ <ul>
+ <li><a href="index.html">Home</a></li>
+ <li class="dropdown">
+ <a href="#" class="dropbtn">About</a>
+ <div class="dropdown-content">
+ <a href="skills.html">Skills I'm Developing</a>
+<a href="goals.html">My Goals as a Student</a>
+<a href="funfacts.html">Fun Facts About Me</a>
+ </div>
+ </li>
+ <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()">Log out</a>
+ </ul>
+ </nav>
+ <section id="section2"></section>
+ 
+<section id="gallery">
+    <div class="gallery-heading">
+        <h2>Gallery</h2>
+        <button id="albumViewBtn" type="button"
+                aria-label="Toggle album view"
+                title="Toggle album view">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="8" height="8" rx="1"/>
+                <rect x="13" y="3" width="8" height="8" rx="1"/>
+                <rect x="3" y="13" width="8" height="8" rx="1"/>
+                <rect x="13" y="13" width="8" height="8" rx="1"/>
+            </svg>
+        </button>
+    </div>
+
+ <p>PHOTOS I FIND CUTE and MEMORABLE:</p>
+ <div class="gallery">
+ <div class="gallery-item">
+ <img src="g12.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">wow! Deans list w/princes HAHAH!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g2.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(); changeImage('2.png');">
+ <p class="image-description">Cutie three eggs!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g3.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Homies!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g4.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Pictorial kuno!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g5.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">With Idols! </p>
+ </div>
+ <div class="gallery-item">
+ <img src="g6.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Basta nami camera princes HAHA!</p>
+ </div>
+  <div class="gallery-item">
+ <img src="g7.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">Mga first year!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g8.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(); changeImage('2.png');">
+ <p class="image-description">Wara pa enroll!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g9.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Literal nga memories!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g10.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Last day immersion!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g11.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">bantay bata!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g1.jpeg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">First day nag uniform!</p>
+ </div>
+  <div class="gallery-item">
+ <img src="g13.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">Grade 12 INYAM?!?</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g14.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(); changeImage('2.png');">
+ <p class="image-description">Gin pagraduate lamang kay mga sabad!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g15.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Basta happy ako jan!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g16.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">With pretty ma'am lalaine!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g17.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Idol?</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g18.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Barbaza parngabot wara lisensya!</p>
+ </div>
+  <div class="gallery-item">
+ <img src="g19.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">Merry ang Christmas!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g20.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(); changeImage('2.png');">
+ <p class="image-description">Tambay!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g21.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Love scars pato?!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g22.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">With hindi ko pa kilala!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g23.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">kamalasag falls!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g24.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">last picture sa balay!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g25.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">basta nami akon smile! </p>
+ </div>
+ <div class="gallery-item">
+ <img src="g26.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">peace sign kuno HAHA!</p>
+ </div>
+  <div class="gallery-item">
+ <img src="g27.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">rigos suba HAHAH</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g28.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(); changeImage('2.png');">
+ <p class="image-description">basta!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g30.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">wow graduate!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g31.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">cutie ang bato!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g32.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">w/my baby!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g33.jpg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">sunset kuno bago mag uli!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g34.jpg" alt="Project Image 2" class="thumbnail" onclick="openLightbox(); changeImage('2.png');">
+ <p class="image-description">ano taya?!?</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g35.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">Grade bff!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g36.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">1st year/day before akwe!</p>
+ </div>
+ <div class="gallery-item">
+ <img src="g37.jpg" alt="Project Image 3" class="thumbnail" onclick="openLightbox(); changeImage('3.png');">
+ <p class="image-description">w/mga bata pagid?</p>
+ </div>
+     <div class="gallery-item">
+ <img src="g41.jpeg" alt="Project Image 1" class="thumbnail" onclick="openLightbox(); changeImage('1.jpg');">
+ <p class="image-description">???</p>
+ </div>
+
+ <!-- Add more gallery items as needed -->
+ </div>
+ <!-- Lightbox container -->
+ <div id="lightbox" class="lightbox">
+ <span class="close" onclick="closeLightbox()">&times;</span>
+ <img class="lightbox-content" id="lightboxImage" src="">
+ <a class="prev" onclick="changeImage(-1)">&#10094;</a>
+ <a class="next" onclick="changeImage(1)">&#10095;</a>
+ </div>
+ </section>
+ <script>
+ // Logout function with confirmation
+ function confirmLogout() {
+ // Show a confirmation message to the user
+ const confirmLogout = confirm("Are you sure you want to log out?");
+ 
+ // If the user confirms, proceed with logging out
+ if (confirmLogout) {
+ // Mark the user as logged out in localStorage (if used)
+ localStorage.removeItem('isLoggedIn'); // Or any other keys related to login credentials
+ 
+ // Redirect to the login page
+ window.location.href = 'login.html';
+ } else {
+ // If the user cancels, do nothing
+ return;
+ }
+ }
+ </script>
+<script>
+ 
+let currentImageIndex = 0;
+const images = document.querySelectorAll('.thumbnail'); // Get all the gallery images
+function openLightbox() {
+ document.getElementById('lightbox').style.display = 'block';
+ showImage(currentImageIndex); // Ensure the lightbox opens with the current image
+}
+function closeLightbox() {
+ document.getElementById('lightbox').style.display = 'none';
+}
+function showImage(index) {
+ currentImageIndex = index; // Update the current image index
+ document.getElementById('lightboxImage').src = images[currentImageIndex].src;
+}
+function changeImage(direction) {
+ currentImageIndex += direction;
+ 
+ // Wrap around when at the start or end of the images
+ if (currentImageIndex < 0) {
+ currentImageIndex = images.length - 1;
+ } else if (currentImageIndex >= images.length) {
+ currentImageIndex = 0;
+ }
+ 
+ // Show the new image
+ showImage(currentImageIndex);
+}
+// Set each thumbnail to open the lightbox with its corresponding image
+images.forEach((img, index) => {
+ img.addEventListener('click', () => showImage(index));
+});
+</script>
+ <audio id="bgMusic" src="m1.mp3" loop preload="auto"></audio>
+
+<button id="musicBtn" class="music-btn" type="button" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24">
+    <path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6" cy="18" r="3" fill="currentColor"/>
+    <circle cx="18" cy="16" r="3" fill="currentColor"/>
+    <line class="slash" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<script>
+var audio = document.getElementById('bgMusic');
+var musicBtn = document.getElementById('musicBtn');
+audio.volume = 0.6;
+
+musicBtn.addEventListener('click', function () {
+  if (audio.paused) {
+    audio.play();
+    musicBtn.classList.add('playing');
+  } else {
+    audio.pause();
+    musicBtn.classList.remove('playing');
+  }
+});
+</script>
+ <footer>
+ <p>&copy; 2026 Melody Isidro. All rights reserved.</p>
+ </footer>
+ <div class="footer-divider"></div>
+ <button id="themeBtn" class="theme-btn" type="button" aria-label="Toggle light and dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4"/>
+      <line x1="12" y1="20" x2="12" y2="22.5"/>
+      <line x1="1.5" y1="12" x2="4" y2="12"/>
+      <line x1="20" y1="12" x2="22.5" y2="12"/>
+      <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/>
+      <line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
+      <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/>
+      <line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
+    </g>
+  </svg>
+</button>
+
+<script>
+(function () {
+  var btn = document.getElementById('themeBtn');
+  try {
+    if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+  } catch (e) {}
+
+  btn.addEventListener('click', function () {
+    var isLight = document.body.classList.toggle('light-mode');
+    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+  });
+})();
+</script>
+ 
+<script>
+(function () {
+    // Avoid creating duplicate particle layers
+    if (document.querySelector('.falling-particle')) return;
+
+    // Keep the effect lightweight, especially on phones
+    var particleCount = window.innerWidth < 600 ? 22 : 38;
+    var fragment = document.createDocumentFragment();
+
+    for (var i = 0; i < particleCount; i++) {
+        var particle = document.createElement('span');
+        particle.className = 'falling-particle';
+
+        var size = (Math.random() * 2.2 + 1).toFixed(1);
+        var duration = (Math.random() * 6 + 7).toFixed(1);
+        var delay = (-Math.random() * 13).toFixed(1);
+        var drift = (Math.random() * 70 - 35).toFixed(0);
+
+        particle.style.left = (Math.random() * 100) + 'vw';
+        particle.style.setProperty('--size', size + 'px');
+        particle.style.setProperty('--duration', duration + 's');
+        particle.style.setProperty('--delay', delay + 's');
+        particle.style.setProperty('--drift', drift + 'px');
+        particle.style.setProperty('--glow', (Math.random() * .45 + .35).toFixed(2));
+
+        fragment.appendChild(particle);
+    }
+
+    document.body.appendChild(fragment);
+})();
+</script>
+ 
+<script>
+(function () {
+    var photos = document.querySelectorAll(
+        '#gallery .gallery-item'
+    );
+
+    // Show all photos if the browser lacks support
+    if (!('IntersectionObserver' in window)) {
+        photos.forEach(function (photo) {
+            photo.classList.add('photo-visible');
+        });
+        return;
+    }
+
+    var photoObserver = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('photo-visible');
+                } else {
+                    // Reset when the photo leaves the screen
+                    entry.target.classList.remove('photo-visible');
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: '0px 0px -35px 0px'
+        }
+    );
+
+    photos.forEach(function (photo, index) {
+        // Stagger the animation slightly
+        photo.style.transitionDelay = (index % 3) * 100 + 'ms';
+        photoObserver.observe(photo);
+    });
+})();
+</script>
+    <script>
+const albumViewBtn = document.getElementById('albumViewBtn');
+const galleryContainer = document.querySelector('#gallery .gallery');
+
+albumViewBtn.addEventListener('click', function () {
+    const isAlbumView = galleryContainer.classList.toggle('album-view');
+
+    albumViewBtn.title = isAlbumView
+        ? 'Return to normal gallery'
+        : 'Group photos into albums';
+
+    albumViewBtn.setAttribute(
+        'aria-label',
+        albumViewBtn.title
+    );
+});
+    </script>
+</body>
+</html>

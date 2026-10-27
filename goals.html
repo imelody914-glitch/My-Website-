@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>My Goals as a Student</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <header>
+ <div class="brand">
+ <span class="brand-avatar"><img src="ton.jpg" alt=""></span>
+ <div class="brand-text"><h1>Welcome to My Personal Website</h1><span>IT Student</span></div>
+ </div>
+ </header>
+ <nav>
+ <ul>
+ <li><a href="index.html">Home</a></li>
+ <li class="dropdown">
+ <a href="#" class="dropbtn" aria-current="page">About</a>
+ <div class="dropdown-content">
+ <a href="skills.html">Skills I'm Developing</a>
+<a href="goals.html">My Goals as a Student</a>
+<a href="funfacts.html">Fun Facts About Me</a>
+ </div>
+ </li>
+ <li><a href="gallery.html">Gallery</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()">Log out</a>
+ </ul>
+ </nav>
+ <section id="section2"></section>
+ <section id="drop">
+ <h2>My Goals as a Student</h2>
+ <p>Here are the aspirations I’m passionately pursuing!</p>
+ 
+ <div class="goal-grid">
+ <div class="goal-card" onclick="toggleGoalDetails(1)">
+ <div class="goal-header"><strong>Short-Term Goals</strong></div>
+ <p><strong>Survive College. </strong></p>
+<div class="goal-details" id="goal1-details">
+ <p>I want to make my nanay proud.</p>
+ </div>
+ </div>
+ 
+ <div class="goal-card" onclick="toggleGoalDetails(1)">
+ <div class="goal-header"><strong>LongTerm Goals</strong></div>
+ <p>Stay alive.</p>
+<div class="goal-details" id="goal2-details">
+ <p>I want to live a life without me thinking to kill myself everytime Im back in that situation again, I hope to wake up every morning without hating it and to live the life I always dream of.</p></p>
+ </div>
+ </div>
+ 
+ <div class="goal-card" onclick="toggleGoalDetails(2)">
+ <div class="goal-header"><strong>Personal Development</strong></div>
+ <p>Know myself: My Personal Development Journey</p>
+<div class="goal-details" id="goal3-details">
+ <p>I strive to become a better person, discover the thinfs that I really want to be, 
+ equipped to handle challenges and make meaningful contributions in both my personal and professional life.</p>
+ </div>
+ </div>
+ 
+ <div class="goal-card" onclick="toggleGoalDetails(2)">
+ <div class="goal-header"><strong>Career Goals</strong></div>
+ <p>As I navigate my professional journey, I am committed to setting and achieving clear career goals that reflect my passions and aspirations. </p>
+ <div class="goal-details" id="goal4-details">
+ <p>My goal is to grow into a leadership position where I can guide teams, drive projects to success, and contribute to strategic decision-making. 
+ I aim to develop my leadership skills through experience and by seeking out opportunities to lead initiatives within my current role.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+ </section>
+ 
+ <footer>
+ <p>&copy; 2026 Melody Isidro. All rights reserved.</p>
+ </footer>
+ <div class="footer-divider"></div> <!-- Orange line -->
+ <script>
+ // Function to toggle details for both cards in a row
+ function toggleGoalDetails(group) {
+ const details1 = document.getElementById('goal' + (group * 2 - 1) + '-details');
+ const details2 = document.getElementById('goal' + (group * 2) + '-details');
+ // Toggle visibility for the paired goals
+ details1.classList.toggle('active');
+ details2.classList.toggle('active');
+ }
+ </script>
+<script>
+ // Logout function with confirmation
+ function confirmLogout() {
+ // Show a confirmation message to the user
+ const confirmLogout = confirm("Are you sure you want to log out?");
+ 
+ // If the user confirms, proceed with logging out
+ if (confirmLogout) {
+ // Mark the user as logged out in localStorage (if used)
+ localStorage.removeItem('isLoggedIn'); // Or any other keys related to login credentials
+ 
+ // Redirect to the login page
+ window.location.href = 'login.html';
+ } else {
+ // If the user cancels, do nothing
+ return;
+ }
+ }
+ 
+ </script>
+<script>
+<button id="themeBtn" class="theme-btn" type="button" aria-label="Toggle light and dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4"/>
+      <line x1="12" y1="20" x2="12" y2="22.5"/>
+      <line x1="1.5" y1="12" x2="4" y2="12"/>
+      <line x1="20" y1="12" x2="22.5" y2="12"/>
+      <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/>
+      <line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
+      <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/>
+      <line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
+    </g>
+  </svg>
+</button>
+</script>
+
+<script>
+(function () {
+  var btn = document.getElementById('themeBtn');
+  try {
+    if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+  } catch (e) {}
+
+  btn.addEventListener('click', function () {
+    var isLight = document.body.classList.toggle('light-mode');
+    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

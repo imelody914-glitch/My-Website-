@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Home - Personal Website</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<header>
+ <div class="brand">
+ <span class="brand-avatar"><img src="ton.jpg" alt=""></span>
+ <div class="brand-text"><h1>Welcome to My Personal Website</h1><span>BSIS Student</span></div>
+ </div>
+ </header>
+ <nav>
+ <ul>
+ <li><a href="index.html" aria-current="page">Home</a></li>
+ <li class="dropdown">
+ <a href="#" class="dropbtn">About</a>
+ <div class="dropdown-content">
+ <a href="skills.html">Skills I'm Developing</a>
+<a href="goals.html">My Goals as a Student</a>
+<a href="funfacts.html">Fun Facts About Me</a>
+ </div>
+ </li>
+ <li><a href="gallery.html">Gallery</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ <a href="javascript:void(0);" class="logout-button" onclick="confirmLogout()">Log out</a>
+ </ul>
+ 
+ </nav>
+ <section id="section2"></section>
+ 
+ <div class="hero">
+ <div class="slider">
+ <div class="slider-dots" aria-hidden="true"><span class="active"></span><span></span><span></span></div>
+ <div class="slides">
+ <div class="slide">
+ <img src="img4.jpg" alt="Image 1">
+ <div class="text-overlay"><h1> Welcome to my Website! </h1></div>
+ </div>
+ <div class="slide">
+ <img src="img6.jpg" alt="Image 2">
+ <div class="text-overlay"><h1> Turning your tragedy into a comedy! </h1></div>
+ </div>
+ <div class="slide">
+ <img src="img5.jpg" alt="Image 3">
+ <div class="text-overlay"><h1> Life is to short to be boring! </h1></div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="bento">
+ <section id="drop">
+ <h2>Fun Facts About Me<span class="jp" lang="ja"></span></h2>
+ <p>Welcome to my Fun Facts About Me! Here, you'll get a glimpse into my passions, interests, and the little quirks that make me who I am. </p>
+ 
+ <div class="funfact-container">
+ <div class="funfact-card">
+ <div class="funfact-inner">
+ <div class="funfact-front">
+ <p>I love Challenges!</p>
+ </div>
+<div class="funfact-back">
+ <p>It makes me feel alive that even my entire life could collapse but somehow instead of being scared I feel really excited!</p>
+ </div>
+ </div>
+ </div>
+ <div class="funfact-card">
+ <div class="funfact-inner">
+ <div class="funfact-front">
+ <p>I love Anime!</p>
+ </div>
+<div class="funfact-back">
+ <p> I realy like watching a psychological anime, na parabang it portrays the life I'm in rn!</p>
+ </div>
+ </div>
+ </div>
+ <div class="funfact-card">
+ <div class="funfact-inner">
+ <div class="funfact-front">
+ <p>  Music! </p>
+ </div>
+<div class="funfact-back">
+ <p>I really appreciate people who writes songs to create a very nice music like thankss bruh it helped me!</p>
+ </div>
+ </div>
+ </div>
+ <div class="funfact-card">
+ <div class="funfact-inner">
+ <div class="funfact-front">
+ <p>I like tragedies! </p>
+ </div>
+<div class="funfact-back">
+ <p>Tragedy in life is the best teacher I've ever known and it made me really happy!!</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- See More Button -->
+ <div class="see-more-container">
+ <a href="funfacts.html" class="see-more-button">See More Funfacts</a>
+ </div>
+ </section>
+ 
+ <div class="container">
+ <div class="image-section" style="display: flex; justify-content: center; align-items: center; width: 100%;">
+    <img src="g4.jpg" alt="Ton's Image" style="display: block; width: 500px; height: 250px; object-fit: cover; border-radius: 25px; margin: 0 auto;">
+</div>
+ <div class="quote-section">
+ <h1>Hi, I'm Mel!</h1>
+ <p>I'm an Information System student, as a kid I don't really see myself as a system expert or be a programmer, 'cause all I want is to draw, build and design a home... in short I really want to be an Architect (no choices walang pera, this is what they called practicality over passion). 
+ But studying it excites me, like bruhh I like this! I want to learn and explore it more.
+ I really like to challenge myself in stuff that I think I'm not capable of. </p><br>
+  <p>
+  </p>
+  <p> I don't care if people won't understand me. People can only meet you as deeply as they've meet themselves. Which means if someone won't have the ability to understand you and that's okay. You don't need to fight to be heard, to be seen or to be approved of. "like bruh...I DON'T CARE!"
+   
+  </p>
+ <blockquote>
+ "But atleast I learned someting, that every moment of our life should be lived to the fullest because it could be very long or very short!"
+ </blockquote>
+ </div>
+ </div>
+ 
+ </div>
+
+ <footer>
+ <p>&copy; 2026 Melody Isidro. All rights reserved.</p>
+ </footer>
+ <div class="footer-divider"></div> <!-- Orange line -->
+ <!-- Lightbox Container -->
+ <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+ <span class="close" onclick="event.stopPropagation(); closeLightbox()">&times;</span>
+ <img class="lightbox-content" id="lightboxImage" src="">
+ </div>
+ <script>
+ const slides = document.querySelector('.slides');
+ let index = 0;
+ function showNextSlide() {
+ index = (index + 1) % 3;
+ slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+ }
+ setInterval(showNextSlide, 3000); // Change slide every 3 seconds
+ function openLightbox(imageSrc) {
+ const lightbox = document.getElementById('lightbox');
+ const lightboxImage = document.getElementById('lightboxImage');
+ lightboxImage.src = imageSrc;
+ lightbox.style.display = 'block';
+ // Hide header and nav
+ document.querySelector('header').style.display = 'none'; // Hides the header
+ document.querySelector('nav').style.display = 'none'; // Hides the nav
+ }
+ function closeLightbox() {
+ const lightbox = document.getElementById('lightbox');
+ lightbox.style.display = 'none';
+ // Show header and nav
+ document.querySelector('header').style.display = 'block'; // Shows the header
+ document.querySelector('nav').style.display = 'flex'; // Shows the nav
+ }
+ document.addEventListener('DOMContentLoaded', function () {
+ const logoutButton = document.querySelector('.logout-button .dropbtn');
+ const logoutDropdown = document.querySelector('.logout-dropdown');
+ // Toggle dropdown visibility on button click
+ logoutButton.addEventListener('click', function () {
+ logoutDropdown.style.display = 
+ logoutDropdown.style.display === 'block' ? 'none' : 'block';
+ });
+ // Close dropdown if clicking outside of it
+ window.addEventListener('click', function (event) {
+ if (!event.target.matches('.dropbtn')) {
+ if (logoutDropdown.style.display === 'block') {
+ logoutDropdown.style.display = 'none';
+ }
+ }
+ });
+ });
+ </script>
+<script>
+(function () {
+  var audio = document.getElementById('bgMusic');
+  var btn = document.getElementById('musicBtn');
+  audio.volume = 0.5;
+
+  // Resume where the song left off on the previous page
+  var t = parseFloat(localStorage.getItem('musicTime'));
+  if (t) audio.currentTime = t;
+
+  function setPlaying(on) {
+    btn.classList.toggle('playing', on);
+    localStorage.setItem('musicOn', on ? '1' : '0');
+  }
+
+  btn.addEventListener('click', function () {
+    if (audio.paused) {
+      audio.play().then(function () { setPlaying(true); });
+    } else {
+      audio.pause();
+      setPlaying(false);
+    }
+  });
+
+  // Try to continue music if it was on (browsers may block until you tap)
+  if (localStorage.getItem('musicOn') === '1') {
+    audio.play().then(function () { setPlaying(true); }).catch(function () {});
+  }
+
+  setInterval(function () {
+    if (!audio.paused) localStorage.setItem('musicTime', audio.currentTime);
+  }, 1000);
+})();
+</script>
+<script>
+// Logout function with confirmation
+function confirmLogout() {
+ // Show a confirmation message to the user
+ const confirmLogout = confirm("Are you sure you want to log out?");
+ // If the user confirms, proceed with logging out
+ if (confirmLogout) {
+ // Mark the user as logged out in localStorage (if used)
+ localStorage.removeItem('isLoggedIn'); // Or any other keys related to login credentials
+ // Redirect to the login page
+ window.location.href = 'login.html';
+ } else {
+ // If the user cancels, do nothing
+ return;
+ }
+}
+</script>
+<script>
+// Keeps the three little indicator bars in step with the slider above
+(function () {
+ var slides = document.querySelector('.slides');
+ var dots = document.querySelectorAll('.slider-dots span');
+ if (!slides || !dots.length) return;
+ new MutationObserver(function () {
+ var m = /(-?\d+(?:\.\d+)?)%/.exec(slides.style.transform);
+ var i = m ? Math.round(Math.abs(parseFloat(m[1])) / 100) : 0;
+ dots.forEach(function (d, k) { d.classList.toggle('active', k === i); });
+ }).observe(slides, { attributes: true, attributeFilter: ['style'] });
+})();
+</script>
+<audio id="bgMusic" src="m1.mp3" loop preload="auto"></audio>
+
+<button id="musicBtn" class="music-btn" type="button" aria-label="Toggle music">
+  <svg viewBox="0 0 24 24">
+    <path d="M9 18V5l12-2v13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6" cy="18" r="3" fill="currentColor"/>
+    <circle cx="18" cy="16" r="3" fill="currentColor"/>
+    <line class="slash" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</button>
+
+<script>
+var audio = document.getElementById('bgMusic');
+var musicBtn = document.getElementById('musicBtn');
+audio.volume = 0.6;
+
+musicBtn.addEventListener('click', function () {
+  if (audio.paused) {
+    audio.play();
+    musicBtn.classList.add('playing');
+  } else {
+    audio.pause();
+    musicBtn.classList.remove('playing');
+  }
+});
+</script>
+<button id="themeBtn" class="theme-btn" type="button" aria-label="Toggle light and dark mode">
+  <svg class="icon-moon" viewBox="0 0 24 24">
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="currentColor"/>
+  </svg>
+  <svg class="icon-sun" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+    <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="12" y1="1.5" x2="12" y2="4"/>
+      <line x1="12" y1="20" x2="12" y2="22.5"/>
+      <line x1="1.5" y1="12" x2="4" y2="12"/>
+      <line x1="20" y1="12" x2="22.5" y2="12"/>
+      <line x1="4.6" y1="4.6" x2="6.4" y2="6.4"/>
+      <line x1="17.6" y1="17.6" x2="19.4" y2="19.4"/>
+      <line x1="4.6" y1="19.4" x2="6.4" y2="17.6"/>
+      <line x1="17.6" y1="6.4" x2="19.4" y2="4.6"/>
+    </g>
+  </svg>
+</button>
+
+<script>
+(function () {
+  var btn = document.getElementById('themeBtn');
+  try {
+    if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-mode');
+  } catch (e) {}
+
+  btn.addEventListener('click', function () {
+    var isLight = document.body.classList.toggle('light-mode');
+    try { localStorage.setItem('theme', isLight ? 'light' : 'dark'); } catch (e) {}
+  });
+})();
+</script>
+
+
+<!-- CUSTOM LOGOUT POPUP: HTML + INLINE CSS + JAVASCRIPT -->
+<div id="logoutOverlay"
+     style="display:none; position:fixed; inset:0; z-index:999999; align-items:center; justify-content:center; padding:20px; box-sizing:border-box; background:rgba(3,10,29,0.82);">
+
+    <div id="logoutModal"
+         style="width:100%; max-width:370px; box-sizing:border-box; padding:30px 22px 24px; text-align:center; color:#eaf4ff; background:linear-gradient(145deg,#172e52,#08162e); border:1px solid #547eac; border-radius:25px; box-shadow:0 15px 50px rgba(0,0,0,0.5); font-family:Arial,sans-serif;">
+
+        <div style="width:64px; height:64px; margin:0 auto 18px; display:flex; align-items:center; justify-content:center; background:#203f67; border:1px solid #79b8e9; border-radius:20px; color:#bde7ff; font-size:32px;">
+            ✦
+        </div>
+
+        <h2 style="margin:0 0 12px; color:#d9edff; font-size:25px;">
+            Leaving So Soon?
+        </h2>
+
+        <p style="margin:0 0 25px; color:#b6cbe5; font-size:15px; line-height:1.7;">
+            Are you sure you want to log out?
+            <span style="color:#8ed3ff;">♡</span>
+        </p>
+
+        <div style="display:flex; gap:10px;">
+            <button type="button" id="stayButton"
+                    style="flex:1; padding:13px 5px; background:#172d4a; color:#c5dcf5; border:1px solid #54718f; border-radius:13px; font-weight:bold; cursor:pointer;">
+                Stay Here
+            </button>
+
+            <button type="button" id="leaveButton"
+                    style="flex:1; padding:13px 5px; background:linear-gradient(135deg,#a8e1ff,#69b8f5); color:#071a32; border:1px solid #b9e6ff; border-radius:13px; font-weight:bold; cursor:pointer;">
+                Log Out ↗
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var overlay = document.getElementById('logoutOverlay');
+    var modal = document.getElementById('logoutModal');
+    var stayButton = document.getElementById('stayButton');
+    var leaveButton = document.getElementById('leaveButton');
+
+    // Connect to your existing onclick="confirmLogout()"
+    window.confirmLogout = function () {
+        overlay.style.display = 'flex';
+        modal.style.transform = 'scale(0.92)';
+        modal.style.opacity = '0';
+        document.body.style.overflow = 'hidden';
+
+        // Smooth popup animation
+        setTimeout(function () {
+            modal.style.transition =
+                'transform 0.25s ease, opacity 0.25s ease';
+            modal.style.transform = 'scale(1)';
+            modal.style.opacity = '1';
+        }, 20);
+    };
+
+    // Cancel logout
+    stayButton.onclick = function () {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    };
+
+    // Confirm logout
+    leaveButton.onclick = function () {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = 'login.html';
+    };
+
+    // Close by tapping outside the popup
+    overlay.onclick = function (event) {
+        if (event.target === overlay) {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Close with Escape
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' &&
+            overlay.style.display === 'flex') {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    });
+})();
+</script>
+
+<script>
+(function () {
+  if (document.getElementById('blue-particles')) return;
+
+  const canvas = document.createElement('div');
+  canvas.id = 'blue-particles';
+  canvas.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(canvas);
+
+  // Keep the effect lightweight on mobile devices.
+  const count = window.innerWidth < 600 ? 14 : 26;
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement('span');
+    particle.className = 'blue-particle';
+
+    particle.style.setProperty('--x', Math.random() * 100 + '%');
+    particle.style.setProperty('--size', (1 + Math.random() * 2) + 'px');
+    particle.style.setProperty('--duration', (7 + Math.random() * 9) + 's');
+    particle.style.setProperty('--delay', (-Math.random() * 15) + 's');
+
+    fragment.appendChild(particle);
+  }
+
+  canvas.appendChild(fragment);
+})();
+</script>
+</body>
+</html>
